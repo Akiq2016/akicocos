@@ -21,7 +21,26 @@ cc.Class({
 
   onLoad: function onLoad() {},
   start: function start() {},
-  update: function update(dt) {}
+  update: function update(dt) {
+    if (this.getPlayerDistance() < this.pickRadius) {
+      this.onPicked();
+      return;
+    }
+  },
+
+
+  /**
+   * @return {number} distance
+   */
+  getPlayerDistance: function getPlayerDistance() {
+    var playerPosition = this.game.player.getPosition();
+    return cc.pDistance(this.node.position, playerPosition);
+  },
+
+  onPicked: function onPicked() {
+    this.game.generateStar();
+    this.node.destroy();
+  }
 });
 
 cc._RF.pop();

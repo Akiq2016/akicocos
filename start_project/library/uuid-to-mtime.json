@@ -294,19 +294,19 @@
     "meta": 1528003494289,
     "relativePath": "scripts\\Player.js"
   },
-  "d1415440-1aac-4412-97d7-c6c5eb566970": {
-    "asset": 1528018032267,
-    "meta": 1528018110404,
-    "relativePath": "scripts\\Star.js"
-  },
   "47a6fa2b-c226-4a84-bb8d-8c048b04f93a": {
     "asset": 1528018228774,
     "meta": 1528018228810,
     "relativePath": "star.prefab"
   },
   "788bb4a3-407c-4249-886b-b4fd5573626f": {
-    "asset": 1528041019556,
-    "meta": 1528041038521,
+    "asset": 1528121642024,
+    "meta": 1528122979079,
     "relativePath": "scripts\\Game.js"
+  },
+  "d1415440-1aac-4412-97d7-c6c5eb566970": {
+    "asset": 1528123089545,
+    "meta": 1528123094596,
+    "relativePath": "scripts\\Star.js"
   }
 }

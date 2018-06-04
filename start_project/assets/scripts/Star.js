@@ -18,5 +18,22 @@ cc.Class({
   start () {
   },
 
-  update (dt) {},
+  update (dt) {
+    if (this.getPlayerDistance() < this.pickRadius) {
+      this.onPicked();
+    }
+  },
+
+  /**
+   * @return {number} distance
+   */
+  getPlayerDistance: function () {
+    var playerPosition = this.game.player.getPosition();
+    return cc.pDistance(this.node.position, playerPosition);
+  },
+
+  onPicked: function() {
+    this.game.generateStar();
+    this.node.destroy();
+  },
 });
