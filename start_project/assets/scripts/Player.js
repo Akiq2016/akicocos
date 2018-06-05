@@ -4,10 +4,6 @@ cc.Class({
   // if `extends` property is declared, the constructor of this specific class will be auto invoked
   extends: cc.Component,
 
-  // constructor:
-  ctor: function () {
-  },
-
   // By declaring properties in the component script,
   // these properties can be visualized in the Property inspector,
   // making it easy to adjust values in the scene.
@@ -29,6 +25,7 @@ cc.Class({
 
     this.leftAccelarate = false;
     this.rightAccelarate = false;
+
     this.xSpeed = 0;
 
     this.initKeyboardEvent();
@@ -45,20 +42,19 @@ cc.Class({
    * @param {number} dt delta time
    */
   update: function (dt) {
-    // update speed: v = v0 + at
+    // 1. update speed: v = v0 + at
     if (this.leftAccelarate) {
       this.xSpeed -= this.acceleration * dt;
     } else if (this.rightAccelarate) {
       this.xSpeed += this.acceleration * dt;
     }
 
-
     // if speed reach limit, use max speed with current direction
     if (Math.abs(this.xSpeed) > this.maxMoveSpeed) {
       this.xSpeed = this.maxMoveSpeed * this.xSpeed / Math.abs(this.xSpeed);
     }
 
-    // update position: x = x0 + vt
+    // 2. update position: x = x0 + vt
     this.node.x += this.xSpeed * dt;
   },
 

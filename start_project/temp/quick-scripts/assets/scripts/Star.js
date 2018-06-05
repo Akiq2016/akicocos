@@ -19,12 +19,12 @@ cc.Class({
     }
   },
 
-  onLoad: function onLoad() {},
-  start: function start() {},
   update: function update(dt) {
-    if (this.getPlayerDistance() < this.pickRadius) {
+    if (this.getToPlayerDistance() < this.pickRadius) {
       this.onPicked();
-      return;
+    } else {
+      var opacityRate = 1 - this.game.timer / this.game.starDuration;
+      this.node.opacity = Math.floor(255 * opacityRate);
     }
   },
 
@@ -32,13 +32,13 @@ cc.Class({
   /**
    * @return {number} distance
    */
-  getPlayerDistance: function getPlayerDistance() {
-    var playerPosition = this.game.player.getPosition();
-    return cc.pDistance(this.node.position, playerPosition);
+  getToPlayerDistance: function getToPlayerDistance() {
+    return cc.pDistance(this.node.position, this.game.player.getPosition());
   },
 
   onPicked: function onPicked() {
     this.game.generateStar();
+    this.game.gainScore();
     this.node.destroy();
   }
 });

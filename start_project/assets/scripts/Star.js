@@ -13,27 +13,25 @@ cc.Class({
     }
   },
 
-  onLoad () {},
-
-  start () {
-  },
-
   update (dt) {
-    if (this.getPlayerDistance() < this.pickRadius) {
+    if (this.getToPlayerDistance() < this.pickRadius) {
       this.onPicked();
+    } else {
+      var opacityRate = 1 - this.game.timer / this.game.starDuration;
+      this.node.opacity = Math.floor(255 * opacityRate);
     }
   },
 
   /**
    * @return {number} distance
    */
-  getPlayerDistance: function () {
-    var playerPosition = this.game.player.getPosition();
-    return cc.pDistance(this.node.position, playerPosition);
+  getToPlayerDistance: function () {
+    return cc.pDistance(this.node.position, this.game.player.getPosition());
   },
 
   onPicked: function() {
     this.game.generateStar();
+    this.game.gainScore();
     this.node.destroy();
   },
 });

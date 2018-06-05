@@ -52,3 +52,4 @@
 2018-06-03T05:41:39.829Z - normal: Run Application
 2018-06-03T05:41:40.493Z - success: preview server running at http://localhost:7456
 2018-06-03T05:41:50.944Z - normal: 1.9.1
+2018-06-05T13:34:31.692Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:852738
