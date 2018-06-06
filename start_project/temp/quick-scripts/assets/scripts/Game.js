@@ -25,6 +25,10 @@ cc.Class({
     scoreLabel: {
       default: null,
       type: cc.Label
+    },
+    scoreAudio: {
+      default: null,
+      url: cc.AudioClip
     }
   },
 
@@ -74,6 +78,7 @@ cc.Class({
     var str = this.scoreLabel.string;
     this.score += 1;
     this.scoreLabel.string = str.slice(0, str.indexOf(':') + 2) + this.score;
+    cc.audioEngine.playEffect(this.scoreAudio, false);
   },
 
   gameOver: function gameOver() {

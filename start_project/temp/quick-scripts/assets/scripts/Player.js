@@ -17,7 +17,11 @@ cc.Class({
     jumpHeight: 0,
     jumpDuration: 0,
     maxMoveSpeed: 0,
-    acceleration: 0
+    acceleration: 0,
+    jumpAudio: {
+      default: null,
+      url: cc.AudioClip
+    }
   },
 
   // at the stage of `onLoad`, other nodes and their assets can be accessed.
@@ -75,7 +79,10 @@ cc.Class({
     // cc.sequence(actions) The actions are performed in sequence.
     var jumpUp = cc.moveBy(this.jumpDuration, cc.p(0, this.jumpHeight)).easing(cc.easeCubicActionOut());
     var jumpDown = cc.moveBy(this.jumpDuration, cc.p(0, -this.jumpHeight)).easing(cc.easeCubicActionIn());
-    return cc.repeatForever(cc.sequence(jumpUp, jumpDown));
+    var callback = cc.callFunc(function () {
+      cc.audioEngine.playEffect(this.jumpAudio, false);
+    }, this);
+    return cc.repeatForever(cc.sequence(jumpUp, jumpDown, callback));
   },
 
   initKeyboardEvent: function initKeyboardEvent() {
