@@ -21,12 +21,7 @@ cc.Class({
   // at the stage of `onLoad`, other nodes and their assets can be accessed.
   // `onLoad` method always be executed before any `start` method.
   onLoad () {
-    this.jumpAction = this.setJumpAction();
-
-    // `this.node` access current component node
-    // some related api: `runAction` `stopAction` `stopAllActions`
-    this.node.runAction(this.jumpAction);
-
+    this.enabled = false;
     this.leftAccelarate = false;
     this.rightAccelarate = false;
 
@@ -37,6 +32,10 @@ cc.Class({
 
   // executed after `onLoad` of all the components
   start () {
+  },
+
+  onEnable () {
+    this.node.runAction(this.setJumpAction());
   },
 
   /**

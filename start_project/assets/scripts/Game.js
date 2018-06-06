@@ -16,6 +16,10 @@ cc.Class({
       default: null,
       type: cc.Node
     },
+    startBtn: {
+      default: null,
+      type: cc.Node
+    },
     scoreLabel: {
       default: null,
       type: cc.Label
@@ -30,12 +34,9 @@ cc.Class({
     // Get the y-axis coordinate of the ground plane
     // (that base on the anchor is still on the center position as default)
     this.groundY = this.ground.y + this.ground.height / 2;
-    this.timer = 0;
-    this.starDuration = 0;
-    this.generateStar();
 
-    // init score
-    this.score = 0;
+    // init game status
+    this.enabled = false
   },
 
   update (dt) {
@@ -44,6 +45,16 @@ cc.Class({
     } else {
       this.timer += dt;
     }
+  },
+
+  onEnable () {
+    this.timer = 0;
+    this.starDuration = 0;
+    this.score = 0;
+    this.generateStar();
+
+    // player
+    this.player.getComponent('Player').enabled = true
   },
 
   generateStar: function() {
@@ -73,6 +84,11 @@ cc.Class({
     this.score += 1;
     this.scoreLabel.string = str.slice(0, str.indexOf(':') + 2) + this.score;
     cc.audioEngine.playEffect(this.scoreAudio, false);
+  },
+
+  startGame: function () {
+    this.enabled = true;
+    this.startBtn.destroy();
   },
 
   gameOver: function () {
