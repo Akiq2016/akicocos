@@ -26,6 +26,7 @@ cc.Class({
     this.rightAccelarate = false;
 
     this.xSpeed = 0;
+    this.maxMoveX = this.node.parent.width - this.node.width
 
     this.initKeyboardEvent();
   },
@@ -58,7 +59,9 @@ cc.Class({
     }
 
     // 2. update position: x = x0 + vt
-    this.node.x += this.xSpeed * dt;
+    if (Math.abs(this.node.x + this.xSpeed * dt) < (this.maxMoveX / 2)) {
+      this.node.x += this.xSpeed * dt
+    }
   },
 
   /**
