@@ -60,7 +60,12 @@ cc.Class({
 
     // 2. update position: x = x0 + vt
     if (Math.abs(this.node.x + this.xSpeed * dt) < (this.maxMoveX / 2)) {
-      this.node.x += this.xSpeed * dt
+      this.node.x += this.xSpeed * dt;
+    } else {
+      // as it touch the boundary, to let him back,
+      // instead of letting xSpeed slowly slow down to 0 and having speed in the opposite direction,
+      // set it's xSpeed to 0 directly.
+      this.xSpeed = 0;
     }
   },
 
