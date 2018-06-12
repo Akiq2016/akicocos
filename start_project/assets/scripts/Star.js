@@ -19,6 +19,9 @@ cc.Class({
     } else {
       var opacityRate = 1 - this.game.timer / this.game.starDuration;
       this.node.opacity = Math.floor(255 * opacityRate);
+      if (this.node.opacity < 5) {
+        this.node.destroy();
+      }
     }
   },
 

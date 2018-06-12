@@ -1,3 +1,5 @@
+const GLOBAL = require('global')
+
 cc.Class({
   extends: cc.Component,
 
@@ -40,7 +42,7 @@ cc.Class({
   },
 
   update (dt) {
-    if (this.timer > this.starDuration) {
+    if (!cc.isValid(this.star)) {
       this.gameOver();
     } else {
       this.timer += dt;
@@ -59,10 +61,10 @@ cc.Class({
 
   generateStar: function() {
     // instantiate new nodes from Prefab
-    var newStar = cc.instantiate(this.starPrefab);
-    this.node.addChild(newStar);
-    newStar.setPosition(this.getStarPosition());
-    newStar.getComponent('Star').game = this;
+    this.star = cc.instantiate(this.starPrefab);
+    this.node.addChild(this.star);
+    this.star.setPosition(this.getStarPosition());
+    this.star.getComponent('Star').game = this;
 
     this.starDuration = this.getStarDuration()
     this.timer = 0;
@@ -92,7 +94,8 @@ cc.Class({
   },
 
   gameOver: function () {
-    this.player.stopAllActions();
-    cc.director.loadScene('game');
+    this.enabled = false;
+    GLOBAL.lastScore = this.score;
+    cc.director.loadScene('gameover');
   },
 });

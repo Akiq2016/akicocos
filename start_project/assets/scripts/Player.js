@@ -22,9 +22,9 @@ cc.Class({
   // `onLoad` method always be executed before any `start` method.
   onLoad () {
     this.enabled = false;
+
     this.leftAccelarate = false;
     this.rightAccelarate = false;
-
     this.xSpeed = 0;
     this.maxMoveX = this.node.parent.width - this.node.width
 
