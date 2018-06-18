@@ -4,6 +4,8 @@ cc._RF.push(module, '788bbSjQHxCSYhrtP1Vc2Jv', 'Game', __filename);
 
 'use strict';
 
+var GLOBAL = require('global');
+
 cc.Class({
   extends: cc.Component,
 
@@ -22,13 +24,17 @@ cc.Class({
       default: null,
       type: cc.Node
     },
+    startBtn: {
+      default: null,
+      type: cc.Node
+    },
     scoreLabel: {
       default: null,
       type: cc.Label
     },
     scoreAudio: {
       default: null,
-      url: cc.AudioClip
+      type: cc.AudioClip
     }
   },
 
@@ -36,54 +42,66 @@ cc.Class({
     // Get the y-axis coordinate of the ground plane
     // (that base on the anchor is still on the center position as default)
     this.groundY = this.ground.y + this.ground.height / 2;
-    this.timer = 0;
-    this.starDuration = 0;
-    this.generateStar();
 
-    // init score
-    this.score = 0;
+    // init game status
+    this.enabled = false;
   },
   update: function update(dt) {
-    if (this.timer > this.starDuration) {
+    if (!cc.isValid(this.star)) {
       this.gameOver();
     } else {
       this.timer += dt;
     }
   },
+  onEnable: function onEnable() {
+    this.timer = 0;
+    this.starDuration = 0;
+    this.score = 0;
+    this.generateStar();
+
+    // player
+    this.player.getComponent('Player').enabled = true;
+  },
 
 
   generateStar: function generateStar() {
     // instantiate new nodes from Prefab
-    var newStar = cc.instantiate(this.starPrefab);
-    this.node.addChild(newStar);
-    newStar.setPosition(this.getStarPosition());
-    newStar.getComponent('Star').game = this;
+    this.star = cc.instantiate(this.starPrefab);
+    this.node.addChild(this.star);
+    this.star.setPosition(this.getStarPosition());
+    this.star.getComponent('Star').game = this;
 
     this.starDuration = this.getStarDuration();
     this.timer = 0;
   },
 
   getStarDuration: function getStarDuration() {
-    return this.minStarDuration + cc.random0To1() * (this.maxStarDuration - this.minStarDuration);
+    return this.minStarDuration + Math.random() * (this.maxStarDuration - this.minStarDuration);
   },
 
   getStarPosition: function getStarPosition() {
-    var randY = this.groundY + cc.random0To1() * this.player.getComponent('Player').jumpHeight;
-    var randX = cc.randomMinus1To1() * (this.node.width / 2);
+    var randY = this.groundY + Math.random() * this.player.getComponent('Player').jumpHeight;
+    var randX = (Math.random() - 0.5) * 2 * (this.node.width / 2);
 
-    return cc.p(randX, randY);
+    return cc.v2(randX, randY);
   },
 
   gainScore: function gainScore() {
     var str = this.scoreLabel.string;
     this.score += 1;
     this.scoreLabel.string = str.slice(0, str.indexOf(':') + 2) + this.score;
-    cc.audioEngine.playEffect(this.scoreAudio, false);
+    cc.audioEngine.play(this.scoreAudio, false);
+  },
+
+  startGame: function startGame() {
+    this.enabled = true;
+    this.startBtn.destroy();
   },
 
   gameOver: function gameOver() {
-    this.player.stopAllActions();
-    cc.director.loadScene('game');
+    this.enabled = false;
+    GLOBAL.lastScore = this.score;
+    cc.director.loadScene('gameover');
   }
 });
 

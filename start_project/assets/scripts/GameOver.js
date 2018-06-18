@@ -19,7 +19,10 @@ cc.Class({
   },
 
   startGame: function () {
-    cc.director.loadScene('game');
+    cc.director.loadScene('game', function () {
+      // cc.log(cc.director.getScene().getComponent('Game').startGame())
+    });
+    cc.log(cc.director.getScene().name, 2)
   },
 
 });

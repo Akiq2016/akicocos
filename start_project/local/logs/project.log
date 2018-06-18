@@ -1,56 +1,79 @@
-2018-06-03T05:41:33.925Z - normal: Load ~/.CocosCreator/settings.json
-2018-06-03T05:41:33.936Z - normal: checking language setting...
-2018-06-03T05:41:33.937Z - normal: Language: zh
-2018-06-03T05:41:36.245Z - success: protocol editor-framework registered
-2018-06-03T05:41:36.245Z - success: protocol app registered
-2018-06-03T05:41:36.245Z - success: protocol theme registered
-2018-06-03T05:41:36.246Z - success: protocol packages registered
-2018-06-03T05:41:36.246Z - success: protocol unpack registerred
-2018-06-03T05:41:36.246Z - success: protocol disable-commonjs registerred
-2018-06-03T05:41:36.578Z - normal: connected!
-2018-06-03T05:41:36.581Z - normal: Check project G:\cocos\akicocos\start_project
-2018-06-03T05:41:36.585Z - normal: Initializing Cocos2d
-2018-06-03T05:41:37.903Z - normal: Initializing Asset Database
-2018-06-03T05:41:37.954Z - success: protocol uuid registerred
-2018-06-03T05:41:37.954Z - success: protocol db registerred
-2018-06-03T05:41:37.954Z - success: protocol thumbnail registerred
-2018-06-03T05:41:37.955Z - normal: Loading editor/builtin packages
-2018-06-03T05:41:37.981Z - success: anysdk loaded
-2018-06-03T05:41:38.141Z - success: assets loaded
-2018-06-03T05:41:38.144Z - success: builder loaded
-2018-06-03T05:41:38.147Z - success: cocos-analytics loaded
-2018-06-03T05:41:38.151Z - success: console loaded
-2018-06-03T05:41:38.202Z - success: fb-instant-games loaded
-2018-06-03T05:41:38.206Z - success: hierarchy loaded
-2018-06-03T05:41:38.210Z - success: inspector loaded
-2018-06-03T05:41:38.211Z - success: keystore loaded
-2018-06-03T05:41:38.215Z - success: node-library loaded
-2018-06-03T05:41:38.217Z - success: package-asset loaded
-2018-06-03T05:41:38.220Z - success: preferences loaded
-2018-06-03T05:41:38.222Z - success: project-exporter loaded
-2018-06-03T05:41:38.241Z - success: project-importer loaded
-2018-06-03T05:41:38.244Z - success: project-settings loaded
-2018-06-03T05:41:38.246Z - success: ui-kit loaded
-2018-06-03T05:41:38.249Z - success: ui-grid loaded
-2018-06-03T05:41:38.253Z - success: scene loaded
-2018-06-03T05:41:38.254Z - success: sprite-editor loaded
-2018-06-03T05:41:38.258Z - success: store loaded
-2018-06-03T05:41:38.263Z - success: timeline loaded
-2018-06-03T05:41:38.264Z - normal: Loading builtin packages
-2018-06-03T05:41:38.267Z - success: asset-db-debugger loaded
-2018-06-03T05:41:38.268Z - success: code-editor loaded
-2018-06-03T05:41:38.269Z - success: color-picker loaded
-2018-06-03T05:41:38.272Z - success: package-manager loaded
-2018-06-03T05:41:38.278Z - success: sdkbox loaded
-2018-06-03T05:41:38.282Z - success: tester loaded
-2018-06-03T05:41:38.283Z - success: ui-kit-preview-extra loaded
-2018-06-03T05:41:38.286Z - success: ui-kit-preview loaded
-2018-06-03T05:41:38.288Z - success: ui-tree loaded
-2018-06-03T05:41:39.798Z - normal: Initializing project G:\cocos\akicocos\start_project
-2018-06-03T05:41:39.803Z - normal: Loading packages
-2018-06-03T05:41:39.810Z - normal: Watching packages
-2018-06-03T05:41:39.829Z - normal: Run Application
-2018-06-03T05:41:40.493Z - success: preview server running at http://localhost:7456
-2018-06-03T05:41:50.944Z - normal: 1.9.1
-2018-06-05T13:34:31.692Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:852738
-2018-06-06T13:46:28.897Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:1040975
+2018-06-18T13:32:49.947Z - normal: Load ~/.CocosCreator/settings.json
+2018-06-18T13:32:49.953Z - normal: checking language setting...
+2018-06-18T13:32:49.953Z - normal: Language: zh
+2018-06-18T13:32:54.506Z - success: protocol editor-framework registered
+2018-06-18T13:32:54.507Z - success: protocol app registered
+2018-06-18T13:32:54.507Z - success: protocol theme registered
+2018-06-18T13:32:54.507Z - success: protocol packages registered
+2018-06-18T13:32:54.507Z - success: protocol unpack registerred
+2018-06-18T13:32:54.507Z - success: protocol disable-commonjs registerred
+2018-06-18T13:32:54.893Z - normal: connected!
+2018-06-18T13:32:54.895Z - normal: Check project G:\cocos\akicocos\start_project
+2018-06-18T13:32:54.899Z - normal: Initializing project G:\cocos\akicocos\start_project
+2018-06-18T13:32:54.911Z - normal: Initializing Cocos2d
+2018-06-18T13:33:00.672Z - normal: Initializing Asset Database
+2018-06-18T13:33:03.369Z - success: protocol uuid registerred
+2018-06-18T13:33:03.370Z - success: protocol db registerred
+2018-06-18T13:33:03.370Z - success: protocol thumbnail registerred
+2018-06-18T13:33:03.370Z - normal: Loading editor/builtin packages
+2018-06-18T13:33:06.217Z - success: anysdk loaded
+2018-06-18T13:33:06.612Z - success: assets loaded
+2018-06-18T13:33:06.615Z - success: builder loaded
+2018-06-18T13:33:06.620Z - success: cocos-analytics loaded
+2018-06-18T13:33:06.635Z - success: console loaded
+2018-06-18T13:33:06.715Z - success: fb-instant-games loaded
+2018-06-18T13:33:06.736Z - success: hierarchy loaded
+2018-06-18T13:33:06.741Z - success: inspector loaded
+2018-06-18T13:33:06.744Z - success: keystore loaded
+2018-06-18T13:33:06.751Z - success: node-library loaded
+2018-06-18T13:33:06.754Z - success: package-asset loaded
+2018-06-18T13:33:06.757Z - success: preferences loaded
+2018-06-18T13:33:06.759Z - success: project-exporter loaded
+2018-06-18T13:33:06.782Z - success: project-importer loaded
+2018-06-18T13:33:06.785Z - success: project-settings loaded
+2018-06-18T13:33:06.790Z - success: ui-kit loaded
+2018-06-18T13:33:06.796Z - success: scene loaded
+2018-06-18T13:33:06.798Z - success: sprite-editor loaded
+2018-06-18T13:33:06.803Z - success: store loaded
+2018-06-18T13:33:06.842Z - success: timeline loaded
+2018-06-18T13:33:06.842Z - normal: Loading builtin packages
+2018-06-18T13:33:07.060Z - success: asset-db-debugger loaded
+2018-06-18T13:33:07.115Z - success: code-editor loaded
+2018-06-18T13:33:07.121Z - success: color-picker loaded
+2018-06-18T13:33:07.224Z - success: package-manager loaded
+2018-06-18T13:33:07.231Z - success: qqplay-adapter loaded
+2018-06-18T13:33:07.305Z - success: sdkbox loaded
+2018-06-18T13:33:08.360Z - success: tester loaded
+2018-06-18T13:33:08.406Z - success: ui-grid loaded
+2018-06-18T13:33:08.431Z - success: ui-kit-preview-extra loaded
+2018-06-18T13:33:08.497Z - success: ui-kit-preview loaded
+2018-06-18T13:33:08.520Z - success: ui-tree loaded
+2018-06-18T13:33:08.525Z - success: weapp-adapter loaded
+2018-06-18T13:33:11.696Z - normal: Loading packages
+2018-06-18T13:33:11.704Z - normal: Watching packages
+2018-06-18T13:33:12.964Z - normal: Run Application
+2018-06-18T13:33:30.029Z - success: preview server running at http://localhost:7456
+2018-06-18T13:34:02.839Z - error: Failed to remove menu in path: 开发者/UI Preview/ui-tree (could not be found)
+    at a.remove (C:\Users\aki\Downloads\CocosCreator_v2.0.0-preview.4\resources\app.asar\editor-framework\lib\main\menu.js:1:2693)
+    at Object.e.remove (C:\Users\aki\Downloads\CocosCreator_v2.0.0-preview.4\resources\app.asar\editor-framework\lib\main\main-menu.js:1:4106)
+    at r.series.n (C:\Users\aki\Downloads\CocosCreator_v2.0.0-preview.4\resources\app.asar\editor-framework\lib\main\package.js:1:4460)
+    at C:\Users\aki\Downloads\CocosCreator_v2.0.0-preview.4\resources\app.asar\node_modules\async\lib\async.js:718:13
+    at Immediate.iterate (C:\Users\aki\Downloads\CocosCreator_v2.0.0-preview.4\resources\app.asar\node_modules\async\lib\async.js:262:13)
+    at runCallback (timers.js:672:20)
+    at tryOnImmediate (timers.js:645:5)
+    at processImmediate [as _immediateCallback] (timers.js:617:5)
+2018-06-18T13:34:02.841Z - success: ui-tree unloaded
+2018-06-18T13:34:02.842Z - error: Failed to remove menu in path: 开发者/UI Preview/ui-tree (could not be found)
+    at a.remove (C:\Users\aki\Downloads\CocosCreator_v2.0.0-preview.4\resources\app.asar\editor-framework\lib\main\menu.js:1:2693)
+    at Object.e.remove (C:\Users\aki\Downloads\CocosCreator_v2.0.0-preview.4\resources\app.asar\editor-framework\lib\main\main-menu.js:1:4106)
+    at r.series.n (C:\Users\aki\Downloads\CocosCreator_v2.0.0-preview.4\resources\app.asar\editor-framework\lib\main\package.js:1:4460)
+    at C:\Users\aki\Downloads\CocosCreator_v2.0.0-preview.4\resources\app.asar\node_modules\async\lib\async.js:718:13
+    at Immediate.iterate (C:\Users\aki\Downloads\CocosCreator_v2.0.0-preview.4\resources\app.asar\node_modules\async\lib\async.js:262:13)
+    at runCallback (timers.js:672:20)
+    at tryOnImmediate (timers.js:645:5)
+    at processImmediate [as _immediateCallback] (timers.js:617:5)
+2018-06-18T13:34:02.843Z - failed: Failed to uncache module main.js: Cannot find it.
+2018-06-18T13:34:02.843Z - success: ui-tree unloaded
+2018-06-18T13:34:02.853Z - failed: Failed to load panel "panel.preview" from "ui-tree", the panelID ui-tree.preview already exists
+2018-06-18T13:34:02.858Z - success: ui-tree loaded
+2018-06-18T13:34:02.859Z - success: ui-tree loaded

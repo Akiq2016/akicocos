@@ -29,7 +29,8 @@ cc.Class({
    * @return {number} distance
    */
   getToPlayerDistance: function () {
-    return cc.pDistance(this.node.position, this.game.player.getPosition());
+    return this.node.position.sub(this.game.player.getPosition()).mag()
+    // return cc.pDistance(this.node.position, this.game.player.getPosition());
   },
 
   onPicked: function() {

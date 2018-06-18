@@ -20,23 +20,19 @@ cc.Class({
     acceleration: 0,
     jumpAudio: {
       default: null,
-      url: cc.AudioClip
+      type: cc.AudioClip
     }
   },
 
   // at the stage of `onLoad`, other nodes and their assets can be accessed.
   // `onLoad` method always be executed before any `start` method.
   onLoad: function onLoad() {
-    this.jumpAction = this.setJumpAction();
-
-    // `this.node` access current component node
-    // some related api: `runAction` `stopAction` `stopAllActions`
-    this.node.runAction(this.jumpAction);
+    this.enabled = false;
 
     this.leftAccelarate = false;
     this.rightAccelarate = false;
-
     this.xSpeed = 0;
+    this.maxMoveX = this.node.parent.width - this.node.width;
 
     this.initKeyboardEvent();
   },
@@ -44,6 +40,9 @@ cc.Class({
 
   // executed after `onLoad` of all the components
   start: function start() {},
+  onEnable: function onEnable() {
+    this.node.runAction(this.setJumpAction());
+  },
 
 
   /**
@@ -66,7 +65,14 @@ cc.Class({
     }
 
     // 2. update position: x = x0 + vt
-    this.node.x += this.xSpeed * dt;
+    if (Math.abs(this.node.x + this.xSpeed * dt) < this.maxMoveX / 2) {
+      this.node.x += this.xSpeed * dt;
+    } else {
+      // as it touch the boundary, to let him back,
+      // instead of letting xSpeed slowly slow down to 0 and having speed in the opposite direction,
+      // set it's xSpeed to 0 directly.
+      this.xSpeed = 0;
+    }
   },
 
   /**
@@ -74,13 +80,13 @@ cc.Class({
    * @return {ActionInterval}
    */
   setJumpAction: function setJumpAction() {
-    // using cc.p to create a cc.Vec2 object which is represented 2D vectors and coordinates
+    // using cc.v2 to create a cc.Vec2 object which is represented 2D vectors and coordinates
     // cc.moveBy(duration<Number>, deltaPos<Vec2|Number>)
     // cc.sequence(actions) The actions are performed in sequence.
-    var jumpUp = cc.moveBy(this.jumpDuration, cc.p(0, this.jumpHeight)).easing(cc.easeCubicActionOut());
-    var jumpDown = cc.moveBy(this.jumpDuration, cc.p(0, -this.jumpHeight)).easing(cc.easeCubicActionIn());
+    var jumpUp = cc.moveBy(this.jumpDuration, cc.v2(0, this.jumpHeight)).easing(cc.easeCubicActionOut());
+    var jumpDown = cc.moveBy(this.jumpDuration, cc.v2(0, -this.jumpHeight)).easing(cc.easeCubicActionIn());
     var callback = cc.callFunc(function () {
-      cc.audioEngine.playEffect(this.jumpAudio, false);
+      cc.audioEngine.play(this.jumpAudio, false);
     }, this);
     return cc.repeatForever(cc.sequence(jumpUp, jumpDown, callback));
   },
@@ -88,10 +94,10 @@ cc.Class({
   initKeyboardEvent: function initKeyboardEvent() {
     cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, function (event) {
       switch (event.keyCode) {
-        case cc.KEY.left:
+        case cc.macro.KEY.left:
           this.leftAccelarate = true;
           break;
-        case cc.KEY.right:
+        case cc.macro.KEY.right:
           this.rightAccelarate = true;
           break;
       }
@@ -99,10 +105,10 @@ cc.Class({
 
     cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, function (event) {
       switch (event.keyCode) {
-        case cc.KEY.left:
+        case cc.macro.KEY.left:
           this.leftAccelarate = false;
           break;
-        case cc.KEY.right:
+        case cc.macro.KEY.right:
           this.rightAccelarate = false;
           break;
       }

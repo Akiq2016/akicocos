@@ -14,7 +14,7 @@ cc.Class({
     acceleration: 0,
     jumpAudio: {
       default: null,
-      url: cc.AudioClip,
+      type: cc.AudioClip,
     },
   },
 
@@ -74,13 +74,13 @@ cc.Class({
    * @return {ActionInterval}
    */
   setJumpAction: function () {
-    // using cc.p to create a cc.Vec2 object which is represented 2D vectors and coordinates
+    // using cc.v2 to create a cc.Vec2 object which is represented 2D vectors and coordinates
     // cc.moveBy(duration<Number>, deltaPos<Vec2|Number>)
     // cc.sequence(actions) The actions are performed in sequence.
-    var jumpUp = cc.moveBy(this.jumpDuration, cc.p(0, this.jumpHeight)).easing(cc.easeCubicActionOut());
-    var jumpDown = cc.moveBy(this.jumpDuration, cc.p(0, -this.jumpHeight)).easing(cc.easeCubicActionIn());
+    var jumpUp = cc.moveBy(this.jumpDuration, cc.v2(0, this.jumpHeight)).easing(cc.easeCubicActionOut());
+    var jumpDown = cc.moveBy(this.jumpDuration, cc.v2(0, -this.jumpHeight)).easing(cc.easeCubicActionIn());
     var callback = cc.callFunc(function () {
-      cc.audioEngine.playEffect(this.jumpAudio, false);
+      cc.audioEngine.play(this.jumpAudio, false);
     }, this);
     return cc.repeatForever(cc.sequence(jumpUp, jumpDown, callback));
   },
@@ -88,10 +88,10 @@ cc.Class({
   initKeyboardEvent: function () {
     cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, function (event) {
       switch(event.keyCode) {
-        case cc.KEY.left:
+        case cc.macro.KEY.left:
           this.leftAccelarate = true;
           break;
-        case cc.KEY.right:
+        case cc.macro.KEY.right:
           this.rightAccelarate = true;
           break;
       }
@@ -99,10 +99,10 @@ cc.Class({
 
     cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, function (event) {
       switch(event.keyCode) {
-        case cc.KEY.left:
+        case cc.macro.KEY.left:
           this.leftAccelarate = false;
           break;
-        case cc.KEY.right:
+        case cc.macro.KEY.right:
           this.rightAccelarate = false;
           break;
       }

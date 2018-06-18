@@ -25,6 +25,9 @@ cc.Class({
     } else {
       var opacityRate = 1 - this.game.timer / this.game.starDuration;
       this.node.opacity = Math.floor(255 * opacityRate);
+      if (this.node.opacity < 5) {
+        this.node.destroy();
+      }
     }
   },
 
@@ -33,7 +36,8 @@ cc.Class({
    * @return {number} distance
    */
   getToPlayerDistance: function getToPlayerDistance() {
-    return cc.pDistance(this.node.position, this.game.player.getPosition());
+    return this.node.position.sub(this.game.player.getPosition()).mag();
+    // return cc.pDistance(this.node.position, this.game.player.getPosition());
   },
 
   onPicked: function onPicked() {

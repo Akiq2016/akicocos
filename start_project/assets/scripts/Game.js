@@ -28,7 +28,7 @@ cc.Class({
     },
     scoreAudio: {
       default: null,
-      url: cc.AudioClip
+      type: cc.AudioClip
     }
   },
 
@@ -71,21 +71,21 @@ cc.Class({
   },
 
   getStarDuration: function () {
-    return this.minStarDuration + cc.random0To1() * (this.maxStarDuration - this.minStarDuration);
+    return this.minStarDuration + Math.random() * (this.maxStarDuration - this.minStarDuration);
   },
 
   getStarPosition: function () {
-    var randY = this.groundY + cc.random0To1() * this.player.getComponent('Player').jumpHeight;
-    var randX = cc.randomMinus1To1() * (this.node.width / 2);
+    var randY = this.groundY + Math.random() * this.player.getComponent('Player').jumpHeight;
+    var randX = (Math.random() - 0.5) * 2 * (this.node.width / 2);
 
-    return cc.p(randX, randY);
+    return cc.v2(randX, randY);
   },
 
   gainScore: function () {
     let str = this.scoreLabel.string
     this.score += 1;
     this.scoreLabel.string = str.slice(0, str.indexOf(':') + 2) + this.score;
-    cc.audioEngine.playEffect(this.scoreAudio, false);
+    cc.audioEngine.play(this.scoreAudio, false);
   },
 
   startGame: function () {
