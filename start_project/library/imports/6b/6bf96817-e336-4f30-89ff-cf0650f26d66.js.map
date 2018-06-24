@@ -1,1 +1,0 @@
-{"version":3,"sources":["..\\..\\..\\..\\..\\assets\\scripts\\common/assets\\scripts\\common\\global.js"],"names":["module","exports","lastScore"],"mappings":";;;;;;AAAAA,OAAOC,OAAP,GAAiB;AACfC,aAAW;AADI,CAAjB","file":"global.js","sourceRoot":"..\\..\\..\\..\\..\\assets\\scripts\\common","sourcesContent":["module.exports = {\r\n  lastScore: 0,\r\n}"]}
