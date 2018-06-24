@@ -26,7 +26,7 @@ cc.Class({
 
   startGame: function startGame() {
     cc.director.loadScene('game', function () {
-      cc.log(cc.director.getScene().getComponent('Game').startGame());
+      // cc.log(cc.director.getScene().getComponent('Game').startGame())
     });
     cc.log(cc.director.getScene().name, 2);
   }

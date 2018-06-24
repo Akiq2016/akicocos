@@ -75,10 +75,10 @@
         "type": "dock-h"
       },
       "panels": [
-        "hierarchy",
         "inspector",
         "console",
         "timeline",
+        "hierarchy",
         "assets",
         "scene"
       ]
