@@ -10,6 +10,10 @@ cc.Class({
       default: null,
       type: cc.Prefab
     },
+    starProgress: {
+      default: null,
+      type: cc.ProgressBar
+    },
     ground: {
       default: null,
       type: cc.Node
@@ -46,17 +50,26 @@ cc.Class({
       this.gameOver();
     } else {
       this.timer += dt;
+      this.starProgress.progress = (this.star.opacity - 5) / 250
     }
   },
 
   onEnable () {
-    this.timer = 0;
-    this.starDuration = 0;
-    this.score = 0;
-    this.generateStar();
+    this.timer = 0
+    this.starDuration = 0
+    this.score = 0
+    this.generateStarProgress()
+    this.generateStar()
 
     // player
     this.player.getComponent('Player').enabled = true
+  },
+
+  generateStarProgress: function() {
+    // this.starProgress = cc.instantiate(this.starProgressPrefab)
+    // this.node.addChild(this.starProgress)
+    this.starProgress.node.setPosition(0, this.node.y)
+    this.starProgress.reverse = false
   },
 
   generateStar: function() {
@@ -66,8 +79,9 @@ cc.Class({
     this.star.setPosition(this.getStarPosition());
     this.star.getComponent('Star').game = this;
 
-    this.starDuration = this.getStarDuration()
     this.timer = 0;
+    this.starDuration = this.getStarDuration()
+    this.starProgress.progress = 1
   },
 
   getStarDuration: function () {
