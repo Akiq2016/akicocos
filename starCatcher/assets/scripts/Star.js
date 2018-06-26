@@ -14,7 +14,9 @@ cc.Class({
   },
 
   update (dt) {
-    if (this.getToPlayerDistance() < this.pickRadius) {
+    const test = this.getToPlayerDistance()
+    console.log(test, this.pickRadius)
+    if (test < this.pickRadius) {
       this.onPicked();
     } else {
       var opacityRate = 1 - this.game.timer / this.game.starDuration;
@@ -29,12 +31,12 @@ cc.Class({
    * @return {number} distance
    */
   getToPlayerDistance: function () {
-    return this.node.position.sub(this.game.player.getPosition()).mag()
-    // return cc.pDistance(this.node.position, this.game.player.getPosition());
+    // console.log(this.node.position, this.node.getPosition(), this.game.player.position, this.game.player.getPosition())
+    return this.node.position.sub(this.game.player.position).mag()
   },
 
   onPicked: function() {
-    this.game.generateStar();
+    this.game.setNewStarRelated();
     this.game.gainScore();
     this.node.destroy();
   },
