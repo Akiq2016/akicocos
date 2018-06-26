@@ -41,7 +41,7 @@ cc.Class({
     // (that base on the anchor is still on the center position as default)
     this.groundY = this.ground.y + this.ground.height / 2
 
-    // init game status
+    // init game component status
     this.enabled = false
   },
 
@@ -50,7 +50,7 @@ cc.Class({
       this.gameOver()
     } else {
       this.timer += dt
-      this.starProgress.progress = (this.star.opacity - 5) / 250
+      this.updateStarProgress()
     }
   },
 
@@ -64,9 +64,13 @@ cc.Class({
   },
 
   generateStarProgress() {
-    this.starProgress.node.enabled = true
-    this.starProgress.node.setPosition(0, this.groundY) // this.node.y
+    this.starProgress.node.active = true
+    this.starProgress.node.setPosition(0, this.node.y)
     this.starProgress.reverse = false
+  },
+
+  updateStarProgress() {
+    this.starProgress.progress = (this.star.opacity - 5) / 250
   },
 
   setNewStarRelated() {
@@ -75,7 +79,6 @@ cc.Class({
   },
 
   generateStar() {
-    console.log(1)
     // instantiate new nodes from Prefab
     this.star = cc.instantiate(this.starPrefab)
     this.node.addChild(this.star)
@@ -94,11 +97,10 @@ cc.Class({
   },
 
   getStarPosition() {
-    var randY = this.groundY + Math.random() * this.player.getComponent('Player').jumpHeight
-    var randX = (Math.random() - 0.5) * 2 * (this.node.width / 2)
+    var Y = this.groundY + this.star.height / 2 + Math.random() * this.player.getComponent('Player').jumpHeight
+    var X = (Math.random() - 0.5) * 2 * ((this.node.width - this.star.width) / 2)
 
-    console.log(this.groundY, randY)
-    return cc.v2(randX, randY)
+    return cc.v2(X, Y)
   },
 
   gainScore() {
@@ -110,7 +112,7 @@ cc.Class({
 
   startGame() {
     this.enabled = true
-    this.startBtn.destroy()
+    this.startBtn.active = false
   },
 
   gameOver() {
