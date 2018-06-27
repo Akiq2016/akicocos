@@ -10,6 +10,7 @@ cc.Class({
   properties: {
     jumpHeight: 0,
     jumpDuration: 0,
+    deformDuration: 0,
     maxMoveSpeed: 0,
     acceleration: 0,
     jumpAudio: {
@@ -77,12 +78,14 @@ cc.Class({
     // using cc.v2 to create a cc.Vec2 object which is represented 2D vectors and coordinates
     // cc.moveBy(duration<Number>, deltaPos<Vec2|Number>)
     // cc.sequence(actions) The actions are performed in sequence.
-    var jumpUp = cc.moveBy(this.jumpDuration, cc.v2(0, this.jumpHeight)).easing(cc.easeCubicActionOut());
-    var jumpDown = cc.moveBy(this.jumpDuration, cc.v2(0, -this.jumpHeight)).easing(cc.easeCubicActionIn());
+    var shrinkBall = cc.scaleTo(this.deformDuration, 1, 0.6)
+    var restoreBall = cc.scaleTo(this.deformDuration, 1, 1)
+    var jumpUp = cc.moveBy(this.jumpDuration, cc.v2(0, this.jumpHeight)).easing(cc.easeCubicActionOut())
+    var jumpDown = cc.moveBy(this.jumpDuration, cc.v2(0, -this.jumpHeight)).easing(cc.easeCubicActionIn())
     var callback = cc.callFunc(function () {
-      cc.audioEngine.play(this.jumpAudio, false);
+      cc.audioEngine.play(this.jumpAudio, false)
     }, this);
-    return cc.repeatForever(cc.sequence(jumpUp, jumpDown, callback));
+    return cc.repeatForever(cc.sequence(shrinkBall, restoreBall, jumpUp, jumpDown, callback));
   },
 
   initKeyboardEvent: function () {

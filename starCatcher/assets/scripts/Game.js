@@ -33,6 +33,18 @@ cc.Class({
     scoreAudio: {
       default: null,
       type: cc.AudioClip
+    },
+    gameHint: {
+      default: null,
+      type: cc.Label
+    },
+    gameHintOnDesktop: {
+      default: '',
+      multiline: true
+    },
+    gameHintOnMobile: {
+      default: '',
+      multiline: true
     }
   },
 
@@ -43,6 +55,9 @@ cc.Class({
 
     // init game component status
     this.enabled = false
+
+    // set game hint for different device
+    this.setGameHint()
   },
 
   update(dt) {
@@ -108,6 +123,12 @@ cc.Class({
     this.score += 1
     this.scoreLabel.string = str.slice(0, str.indexOf(':') + 2) + this.score
     cc.audioEngine.play(this.scoreAudio, false)
+  },
+
+  setGameHint() {
+    this.gameHint.string = cc.sys.isMobile
+      ? this.gameHintOnMobile
+      : this.gameHintOnDesktop
   },
 
   startGame() {
