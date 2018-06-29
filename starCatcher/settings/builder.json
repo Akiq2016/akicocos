@@ -28,7 +28,7 @@
   "renderMode": "0",
   "startScene": "c71c8016-1fee-4625-ad1c-2be858e78038",
   "title": "starCatcher",
-  "webOrientation": "auto",
+  "webOrientation": "landscape",
   "wechatgame": {
     "REMOTE_SERVER_ROOT": "",
     "appid": "wx6ac3f5090a6b99c5",
