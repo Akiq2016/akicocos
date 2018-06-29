@@ -58,11 +58,17 @@ cc.Class({
 
     // set game hint for different device
     this.setGameHint()
+
+    // initialize star pool
+    this.starPool = new cc.NodePool('Star')
   },
 
   update(dt) {
-    if (!cc.isValid(this.star)) {
+    if (this.starPool.size() >= 1) {
       this.gameOver()
+
+      // disable this to avoid gameOver() repeatedly
+      this.enabled = false
     } else {
       this.timer += dt
       this.updateStarProgress()
@@ -95,10 +101,12 @@ cc.Class({
 
   generateStar() {
     // instantiate new nodes from Prefab
-    this.star = cc.instantiate(this.starPrefab)
+    this.star = this.starPool.size() >= 1
+      ? this.starPool.get()
+      : cc.instantiate(this.starPrefab)
     this.node.addChild(this.star)
     this.star.setPosition(this.getStarPosition())
-    this.star.getComponent('Star').game = this
+    this.star.getComponent('Star').init(this)
   },
 
   resetParamsThatDependOnStar() {
@@ -137,7 +145,6 @@ cc.Class({
   },
 
   gameOver() {
-    this.enabled = false
     GLOBAL.lastScore = this.score
     cc.director.loadScene('gameover')
   },

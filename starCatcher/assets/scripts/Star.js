@@ -13,16 +13,24 @@ cc.Class({
     }
   },
 
-  update (dt) {
-    const test = this.getToPlayerDistance()
-    console.log(test, this.pickRadius)
-    if (test < this.pickRadius) {
-      this.onPicked();
+  onLoad() {
+    this.enable = false
+  },
+
+  init(game) {
+    this.game = game
+    this.enable = true
+    this.node.opacity = 255
+  },
+
+  update(dt) {
+    if (this.getToPlayerDistance() < this.pickRadius) {
+      this.onPicked()
     } else {
-      var opacityRate = 1 - this.game.timer / this.game.starDuration;
-      this.node.opacity = Math.floor(255 * opacityRate);
+      var opacityRate = 1 - this.game.timer / this.game.starDuration
+      this.node.opacity = Math.floor(255 * opacityRate)
       if (this.node.opacity < 5) {
-        this.node.destroy();
+        this.game.starPool.put(this.node)
       }
     }
   },
@@ -31,13 +39,12 @@ cc.Class({
    * @return {number} distance
    */
   getToPlayerDistance: function () {
-    // console.log(this.node.position, this.node.getPosition(), this.game.player.position, this.game.player.getPosition())
     return this.node.position.sub(this.game.player.position).mag()
   },
 
   onPicked: function() {
-    this.game.setNewStarRelated();
-    this.game.gainScore();
-    this.node.destroy();
+    this.game.gainScore()
+    this.game.starPool.put(this.node)
+    this.game.setNewStarRelated()
   },
 });
