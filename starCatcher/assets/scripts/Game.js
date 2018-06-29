@@ -76,17 +76,20 @@ cc.Class({
   },
 
   onEnable() {
+    // initiate score
     this.score = 0
+
+    // initiate star related
     this.generateStarProgress()
     this.setNewStarRelated()
 
-    // player
+    // initiate player
+    this.player.active = true
     this.player.getComponent('Player').enabled = true
   },
 
   generateStarProgress() {
     this.starProgress.node.active = true
-    this.starProgress.node.setPosition(0, this.node.y)
     this.starProgress.reverse = false
   },
 

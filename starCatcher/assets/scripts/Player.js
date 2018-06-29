@@ -17,6 +17,10 @@ cc.Class({
       default: null,
       type: cc.AudioClip,
     },
+    game: {
+      default: null,
+      type: cc.Node
+    }
   },
 
   // at the stage of `onLoad`, other nodes and their assets can be accessed.
@@ -37,6 +41,10 @@ cc.Class({
   },
 
   onEnable () {
+    // initiate position
+    this.node.setPosition(0, this.game.getComponent('Game').groundY)
+
+    // run action
     this.node.runAction(this.setJumpAction());
   },
 
