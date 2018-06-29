@@ -42,7 +42,7 @@ cc.Class({
 
   onEnable () {
     // initiate position
-    this.node.setPosition(0, this.game.getComponent('Game').groundY)
+    this.node.setPosition(cc.v2(0, this.game.getComponent('Game').groundY))
 
     // run action
     this.node.runAction(this.setJumpAction());
