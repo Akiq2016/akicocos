@@ -89,6 +89,7 @@ cc.Class({
   },
 
   generateStarProgress() {
+    this.starProgress.totalLength = this.starProgress.node.width
     this.starProgress.node.active = true
     this.starProgress.reverse = false
   },
@@ -125,7 +126,6 @@ cc.Class({
   getStarPosition() {
     var Y = this.groundY + this.star.height / 2 + Math.random() * this.player.getComponent('Player').jumpHeight
     var X = (Math.random() - 0.5) * 2 * ((this.node.width - this.star.width) / 2)
-    console.log(Y)
     return cc.v2(X, Y)
   },
 
