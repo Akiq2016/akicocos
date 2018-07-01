@@ -33,7 +33,8 @@ cc.Class({
     this.xSpeed = 0;
     this.maxMoveX = this.node.parent.width - this.node.width
 
-    this.initKeyboardEvent();
+    this.initKeyboardEvent()
+    this.initTouchEvent()
   },
 
   // executed after `onLoad` of all the components
@@ -119,4 +120,24 @@ cc.Class({
       }
     }, this);
   },
+
+  initTouchEvent: function () {
+    let currentCanvas = cc.Canvas.instance.node
+
+    currentCanvas.on(cc.Node.EventType.TOUCH_START, function (event) {
+      const TOUCH_LOCATION = event.getLocation()
+      if (TOUCH_LOCATION.x > cc.winSize.width / 2) {
+        this.leftAccelarate = false
+        this.rightAccelarate = true
+      } else {
+        this.leftAccelarate = true
+        this.rightAccelarate = false
+      }
+    }, this)
+
+    currentCanvas.on(cc.Node.EventType.TOUCH_END, function (event) {
+      this.leftAccelarate = false
+      this.rightAccelarate = false
+    }, this)
+  }
 });
